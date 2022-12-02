@@ -1,7 +1,7 @@
 $(document).ready(function () {
   // This is to show the date and the time
   var todayDate = moment().format("MMMM Do YYYY, h:mm:ss a");
-  $("currentDay").text(todayDate);
+  $("#currentDay").text(todayDate);
   // listen for save button clicks
   $('.saveBtn').on('click', function () {
     // get nearby values
@@ -12,6 +12,7 @@ $(document).ready(function () {
     // save in localStorage
     localStorage.setItem(time, text);
   })
+  loadSavedData();
 
   var hourNine = 9;
   var hourTen = 10; 
@@ -34,96 +35,111 @@ $(document).ready(function () {
 
       // check if we've moved past this time
       if (currentHour < hourNine) {
-        $("hour-9").addClass('past');
+        $("#hour-9").addClass('past');
       }
       else if (currentHour === hourNine) {
-        $("hour-9").removeClass("present");
+        $("#hour-9").addClass("present");
       }
       else if (currentHour > hourNine) {
-      $("hour-9").removeClass("future");
+      $("#hour-9").addClass("future");
       }
 
       if (currentHour < hourTen) {
-        $("hour-10").addClass('past');
+        $("#hour-10").addClass('past');
       }
       else if (currentHour=== hourTen) {
-        $("hour-10").removeClass("present");
+        $("#hour-10").addClass("present");
       }
       else if (currentHour > hourTen) {
-      $("hour-10").removeClass("future");
+      $("#hour-10").addClass("future");
       }
 
       if (currentHour < hourEleven) {
-        $("hour-11").addClass('past');
+        $("#hour-11").addClass('past');
       }
       else if (currentHour === hourEleven) {
-        $("hour-11").removeClass("present");
+        $("#hour-11").addClass("present");
       }
       else if (currentHour > hourEleven) {
-      $("hour-11").removeClass("future");
+      $("#hour-11").addClass("future");
       }
 
       if (currentHour< hourTwelve) {
-        $("hour-12").addClass('past');
+        $("#hour-12").addClass('past');
       }
       else if (currentHour === hourTwelve) {
-        $("hour-12").removeClass("present");
+        $("#hour-12").addClass("present");
       }
       else if (currentHour > hourTwelve) {
-      $("hour-12").removeClass("future");
+      $("#hour-12").addClass("future");
       }
 
       if (currentHour < hourThirteen) {
-        $("hour-13").addClass('past');
+        $("#hour-13").addClass('past');
       }
       else if (currentHour === hourThirteen) {
-        $("hour-13").removeClass("present");
+        $("#hour-13").addClass("present");
       }
       else if (currentHour > hourThirteen) {
-      $("hour-13").removeClass("future");
+      $("#hour-13").addClass("future");
       }
 
       if (currentHour < hourFourteen) {
-        $("hour-14").addClass('past');
+        $("#hour-14").addClass('past');
       }
       else if (currentHour ===  hourFourteen) {
-        $("hour-14").removeClass("present");
+        $("#hour-14").addClass("present");
       }
       else if (currentHour >  hourFourteen) {
-      $("hour-14").removeClass("future");
+      $("#hour-14").addClass("future");
       }
 
       if (currentHour < hourFifteen) {
-        $("hour-15").addClass('past');
+        $("#hour-15").addClass('past');
       }
       else if (currentHour === hourFifteen) {
-        $("hour-15").removeClass("present");
+        $("#hour-15").addClass("present");
       }
       else if (currentHour > hourFifteen) {
-      $("hour-15").removeClass("future");
+      $("#hour-15").addClass("future");
       }
 
-      if (currentHour < hoursixteen) {
-        $("hour-16").addClass('past');
+      if (currentHour < hourSixteen) {
+        $("#hour-16").addClass('past');
       }
-      else if (currentHour === hoursixteen) {
-        $("hour-16").removeClass("present");
+      else if (currentHour === hourSixteen) {
+        $("#hour-16").addClass("present");
       }
-      else if (currentHour > hoursixteen) {
-      $("hour-16").removeClass("future");
+      else if (currentHour > hourSixteen) {
+      $("#hour-16").addClass("future");
       }
 
       if (currentHour < hourSeventeen) {
-        $("hour-17").addClass('past');
+        $("#hour-17").addClass('past');
       }
       else if (currentHour === hourSeventeen) {
-        $("hour-17").removeClass("present");
+        $("#hour-17").addClass("present");
       }
       else if (currentHour > hourSeventeen) {
-      $("hour-17").removeClass("future");
+      $("#hour-17").addClass("future");
       }
   }
 
+  function loadSavedData(){
+    let childDivs=$('.container div');
+    for (let index = 0; index < childDivs.length; index++) {
+      const element = childDivs[index];
+      if($(element).attr('id')){
+        let localStorageKey=$(element).attr('id');
+        let localStroageValue=localStorage.getItem(localStorageKey);
+        if(localStroageValue!=null){
+          console.log(localStroageValue,localStorageKey);
+          $(element).children('.description').val(localStroageValue)
+        }
+      }
+      
+    }
+  }
 
   // load any saved data from localStorage
   $('#hour-9 .description').val(localStorage.getItem('hour-9'));
