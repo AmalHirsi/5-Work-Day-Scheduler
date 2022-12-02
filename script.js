@@ -14,6 +14,7 @@ $(document).ready(function () {
   })
   loadSavedData();
 
+  var hourEight = 8;
   var hourNine = 9;
   var hourTen = 10; 
   var hourEleven = 11;
@@ -34,6 +35,16 @@ $(document).ready(function () {
     //     console.log (blockHour, currentHour)
 
       // check if we've moved past this time
+      if (currentHour < hourEight) {
+        $("#hour-8").addClass('past');
+      }
+      else if (currentHour === hourEight) {
+        $("#hour-8").addClass("present");
+      }
+      else if (currentHour > hourEight) {
+      $("#hour-8").addClass("future");
+      }
+
       if (currentHour < hourNine) {
         $("#hour-9").addClass('past');
       }
