@@ -1,6 +1,6 @@
 $(document).ready(function () {
   // This is to show the date and the time
-  var todayDate = moment().format("MMMM Do YYYY, h:mm:ss a");
+  var todayDate = moment().format("MMMM Do YYYY");
   $("#currentDay").text(todayDate);
   // listen for save button clicks
   $('.saveBtn').on('click', function () {
