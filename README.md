@@ -26,6 +26,7 @@ Amal Hirsi
 Email: ahirsi@hotmail.co.uk
 Github: https://github.com/AmalHirsi
 https://github.com/AmalHirsi/5-Work-Day-Scheduler.git
+https://amalhirsi.github.io/5-Work-Day-Scheduler/
 
 
 
